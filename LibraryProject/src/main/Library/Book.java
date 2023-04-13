@@ -11,17 +11,19 @@ public class Book {
 
     public String getId(){
         return id;
+
     }
 
     public String getDescription(){
         return description;
+
     }
 
     public boolean isRented(){
         return isRented;
     }
 
-    public void setRented{
+    public void setRented(boolean isRented){
         this.isRented=isRented;
     }
 
