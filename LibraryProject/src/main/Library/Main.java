@@ -64,7 +64,6 @@ public class Main {
 
         //TODO: set up rental return and new rental menu
 
-    }
 
     public static void newSignUp() {
         String userFirstName;
