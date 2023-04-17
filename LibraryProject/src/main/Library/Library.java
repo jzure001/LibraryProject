@@ -11,8 +11,8 @@ public class Library {
 
     }
 
-    public void registerUser(int id){
-        users.put(id, new LibraryUser(id));
+    public void registerUser(int id, String firstName, String lastName){
+        users.put(id, new LibraryUser(firstName, lastName));
     }
 
     public boolean isUserRegistered(int id){
