@@ -65,7 +65,6 @@ public class Main {
         }
     }
 
-        //TODO: set up rental return and new rental menu
 
 
     public static void newSignUp() {
@@ -97,7 +96,7 @@ public class Main {
         //TODO: search for registered user in database and take to rental
 
     }
-}
+
 
     public static void manageBooks() {
         int option;
