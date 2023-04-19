@@ -44,24 +44,35 @@ public class Main {
 
     }
 
-    public static void bookRental(String bookName, int userId) {
-        Book book= library.searchBook(bookName);
+    public static void bookRental(String bookId, int userId, boolean rent) {
+        Book book = library.searchBook(bookId);
         if (book == null) {
             System.out.println("Book not found.");
             return;
         }
 
-        if (! library.isUserRegistered(userId)) {
+        LibraryUser user = library.getUser(userId);
+        if (user == null) {
             System.out.println("User not registered.");
             return;
         }
 
-        if (book.isRented()) {
-            System.out.println("Book is currently rented. Returning book.");
-            book.setRented(false);
+        if (rent) {
+            if (book.isRented()) {
+                System.out.println("Book is already rented.");
+            } else {
+                System.out.println("Renting book to user.");
+                book.setRented(true);
+                user.addToBorrowingHistory(book);
+            }
         } else {
-            System.out.println("Renting book to user.");
-            book.setRented(true);
+            if (book.isRented()) {
+                System.out.println("Returning book.");
+                book.setRented(false);
+                user.removeFromBorrowingHistory(book.getId());
+            } else {
+                System.out.println("Book is not rented.");
+            }
         }
     }
 
@@ -88,13 +99,70 @@ public class Main {
         library.registerUser(userId, userFirstName, userLastName);
         System.out.println("User registered successfully.");
 
-        registeredUser(userId);
+        registeredUser();
 
     }
 
-    public static void registeredUser(int userId) {
-        //TODO: search for registered user in database and take to rental
+    public static void registeredUser() {
+        System.out.println("Enter your user ID:");
+        int userId = keyboard.nextInt();
+        keyboard.nextLine();
 
+        if (!library.isUserRegistered(userId)) {
+            System.out.println("User not registered. Please sign up first.");
+            return;
+        }
+
+        int userOption = 1;
+
+        while (userOption != 0) {
+            System.out.println("Choose an option:");
+            System.out.println("0: Back to main menu");
+            System.out.println("1: Search for a book");
+            System.out.println("2: Rent a book");
+            System.out.println("3: Return a book");
+            System.out.println("4: View Your Rented Books");
+            userOption = keyboard.nextInt();
+            keyboard.nextLine();
+
+            switch (userOption) {
+                case 0:
+                    System.out.println("Returning to main menu.");
+                    break;
+                case 1:
+                    System.out.println("Enter the book ID to search:");
+                    String bookId = keyboard.nextLine();
+                    Book book = library.searchBook(bookId);
+                    if (book == null) {
+                        System.out.println("Book not found.");
+                    } else {
+                        System.out.println("Book found: " + book.getDescription());
+                    }
+                    break;
+                case 2:
+                    System.out.println("Enter the book ID to rent:");
+                    String rentBookId = keyboard.nextLine();
+                    bookRental(rentBookId, userId, true);
+                    break;
+                case 3:
+                    System.out.println("Enter the book ID to return:");
+                    String returnBookId = keyboard.nextLine();
+                    bookRental(returnBookId, userId, false);
+                    break;
+                case 4:
+                    LibraryUser user = library.getUser(userId);
+                    if (user != null){
+                        System.out.println("Rented books: ");
+                        System.out.println(user.getRentedBooksList());
+                    }
+                    else{
+                        System.out.println("Error in finding book list for this user.");
+                    }
+                default:
+                    System.out.println("Please enter one of the available options!");
+                    break;
+            }
+        }
     }
 
 

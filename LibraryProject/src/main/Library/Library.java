@@ -10,6 +10,11 @@ public class Library {
         books = new HashMap<String, Book>();
 
     }
+    public LibraryUser getUser(int id) {
+        return users.get(id);
+    }
+
+
 
     public void registerUser(int id, String firstName, String lastName){
         users.put(id, new LibraryUser(firstName, lastName));
