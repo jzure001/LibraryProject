@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class LibraryUser {
+public class LibraryUser implements LibraryUserInterface {
     private String userFirstName;
     private String userLastName;
     private Map<String, Book> borrowingHistory;

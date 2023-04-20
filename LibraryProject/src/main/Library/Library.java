@@ -1,7 +1,7 @@
 import java.util.HashMap;
 
 
-public class Library {
+public class Library implements LibraryInterface {
     private HashMap<Integer, LibraryUser> users;
     private HashMap<String, Book> books;
 

@@ -1,4 +1,4 @@
-public class Book {
+public class Book implements BookInterface {
     private String id;
     private String description;
     private boolean isRented;
