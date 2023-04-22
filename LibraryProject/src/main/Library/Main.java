@@ -7,6 +7,8 @@ public class Main {
 
 
     public static void main(String[] args) {
+        library.initializeBooks();
+
         String userFirstName;
         String userLastName;
         int menuOption = 1;

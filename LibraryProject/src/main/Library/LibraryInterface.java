@@ -3,6 +3,9 @@ interface LibraryInterface {
         // returns this user's id
         public LibraryUser getUser(int id);
 
+        //Adds existing books to library
+        void initializeBooks();
+
         // adds user to hashmap using provided id and user's first and last name
         public void registerUser(int id, String firstName, String lastName);
 

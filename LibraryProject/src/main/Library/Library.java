@@ -14,7 +14,11 @@ public class Library implements LibraryInterface {
         return users.get(id);
     }
 
+    public void initializeBooks() {
+        addBook("1","Introduction to C");
+        addBook("2","Introduction to Python");
 
+    }
 
     public void registerUser(int id, String firstName, String lastName){
         users.put(id, new LibraryUser(firstName, lastName));
