@@ -6,8 +6,8 @@ public class Library implements LibraryInterface {
     private HashMap<String, Book> books;
 
     public Library(){
-        users= new HashMap<Integer, LibraryUser>();
-        books = new HashMap<String, Book>();
+        users= new HashMap<>();
+        books = new HashMap<>();
 
     }
     public LibraryUser getUser(int id) {

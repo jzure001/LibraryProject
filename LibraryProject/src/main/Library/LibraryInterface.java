@@ -2,24 +2,24 @@
 interface LibraryInterface {
 
         // returns this user's id
-        public LibraryUser getUser(int id);
+         LibraryUser getUser(int id);
 
         //Adds existing books to library
         void initializeBooks();
 
         // adds user to hashmap using provided id and user's first and last name
-        public void registerUser(int id, String firstName, String lastName);
+         void registerUser(int id, String firstName, String lastName);
 
         // checks hashmap for id and returns boolean
-        public boolean isUserRegistered(int id);
+         boolean isUserRegistered(int id);
 
         // adds book id and book's description to hashmap
-        public void addBook(String id, String description);
+         void addBook(String id, String description);
 
         // searches hashmap for specified book
-        public Book searchBook(String id);
+         Book searchBook(String id);
 
         // removes book from hashmap
-        public void removeBook(String id);
+         void removeBook(String id);
 }
 
