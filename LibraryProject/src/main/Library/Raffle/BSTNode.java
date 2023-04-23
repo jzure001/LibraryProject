@@ -1,6 +1,6 @@
 package Raffle;
 public class BSTNode
-
+//created by Chris
 {
     String item;
     int raffle;		// The data in the node

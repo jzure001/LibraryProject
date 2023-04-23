@@ -2,7 +2,7 @@ package Raffle;
 import Raffle.BSTNode;
 import java.util.Scanner;
 import java.util.Random;
-
+//created by chris
 public class Raffle implements RaffleInterface {
     BSTNode root = null;
     int count = 20;
