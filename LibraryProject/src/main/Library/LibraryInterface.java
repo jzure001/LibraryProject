@@ -1,3 +1,4 @@
+//interfaces done by Chris
 interface LibraryInterface {
 
         // returns this user's id

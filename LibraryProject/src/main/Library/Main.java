@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+//Main class created by John Zurek and Roberto Solorzano
 public class Main {
 
     public static Scanner keyboard = new Scanner(System.in);

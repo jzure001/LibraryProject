@@ -1,5 +1,5 @@
 import java.util.HashMap;
-
+//Library class created by John Zurek
 
 public class Library implements LibraryInterface {
     private HashMap<Integer, LibraryUser> users;

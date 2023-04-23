@@ -1,3 +1,4 @@
+//Book class created by John Zurek
 public class Book implements BookInterface {
     private String id;
     private String description;

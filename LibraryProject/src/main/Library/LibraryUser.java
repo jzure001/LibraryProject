@@ -1,6 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
-
+//Library user created by Roberto Solorzano
 public class LibraryUser implements LibraryUserInterface {
     private String userFirstName;
     private String userLastName;
