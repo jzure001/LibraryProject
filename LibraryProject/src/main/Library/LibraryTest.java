@@ -1,5 +1,5 @@
-
-//John Zurek created the library test class for the hashmap features
+import Raffle.Raffle;
+//John Zurek created test class
 public class LibraryTest {
 
     public static void main(String[] args) {
@@ -8,6 +8,9 @@ public class LibraryTest {
         testLibraryUserRegistration();
         testLibraryBookSearch();
         testLibraryBookRemoval();
+        testRaffleCheckWinner();
+        testRafflePutDuplicate();
+        testRaffleTreeStructure();
         System.out.println("All tests passed.");
     }
 
@@ -48,4 +51,47 @@ public class LibraryTest {
         library.removeBook("1234");
         assert library.searchBook("1234") == null : "Book removal failed";
     }
+
+    public static void testRaffleCheckWinner() {
+        Raffle raffle = new Raffle();
+
+        // Add names and raffle numbers to the tree
+        raffle.put("Samantha", 1);
+        raffle.put("Alex", 2);
+        raffle.put("Benjamin", 3);
+
+        // Test checkWinner method with different inputs
+        String winnerMessage1 = raffle.checkWinner(raffle.getRoot(), 1, 1);
+        assert winnerMessage1.contains("Congratulations") : "checkWinner failed when raffle number is the winner";
+
+        String winnerMessage2 = raffle.checkWinner(raffle.getRoot(), 1, 2);
+        assert winnerMessage2.contains("Sorry") : "checkWinner failed when raffle number is not the winner";
+
+        String winnerMessage3 = raffle.checkWinner(raffle.getRoot(), 4, 1);
+        assert winnerMessage3.contains("Error") : "checkWinner failed when raffle number is not in the tree";
+    }
+
+    public static void testRafflePutDuplicate() {
+        Raffle raffle = new Raffle();
+
+        raffle.put("Samantha", 1);
+        raffle.put("Alex", 1);
+
+        String winnerMessage = raffle.checkWinner(raffle.getRoot(), 1, 1);
+        assert winnerMessage.contains("Congratulations") && winnerMessage.contains("Samantha") : "put method failed when handling duplicate raffle numbers";
+    }
+
+    public static void testRaffleTreeStructure() {
+        Raffle raffle = new Raffle();
+
+        raffle.put("Samantha", 1);
+        raffle.put("Alex", 2);
+        raffle.put("Benjamin", 3);
+
+        assert raffle.getRaffleNumber(raffle.getRoot()) == 1 : "Tree root is incorrect";
+        assert raffle.getRaffleNumber(raffle.getRightChild(raffle.getRoot())) == 2 : "Tree structure is incorrect";
+        assert raffle.getRaffleNumber(raffle.getRightChild(raffle.getRightChild(raffle.getRoot()))) == 3 : "Tree structure is incorrect";
+    }
+
+
 }
