@@ -1,2 +1,2 @@
 # LibraryProject
-DataStructures Library Project
+Data Structures Library Project
